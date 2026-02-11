@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply font-body text-landora-dark bg-white antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+  
+  p {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+}
+
+@layer components {
+  /* Button Styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 
+           bg-landora-primary text-white font-heading font-semibold 
+           uppercase tracking-wider text-sm
+           rounded-sm transition-all duration-300 ease-in-out
+           hover:bg-landora-secondary hover:shadow-lg
+           focus:outline-none focus:ring-2 focus:ring-landora-accent focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-4 
+           bg-transparent text-landora-primary font-heading font-semibold 
+           uppercase tracking-wider text-sm
+           border-2 border-landora-primary rounded-sm
+           transition-all duration-300 ease-in-out
+           hover:bg-landora-primary hover:text-white
+           focus:outline-none focus:ring-2 focus:ring-landora-accent focus:ring-offset-2;
+  }
+  
+  .btn-white {
+    @apply inline-flex items-center justify-center px-8 py-4 
+           bg-white text-landora-primary font-heading font-semibold 
+           uppercase tracking-wider text-sm
+           rounded-sm transition-all duration-300 ease-in-out
+           hover:bg-gray-100 hover:shadow-lg
+           focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2;
+  }
+
+  /* Section Number */
+  .section-number {
+    @apply text-8xl md:text-9xl font-heading font-bold text-gray-100 
+           absolute -left-4 -top-8 select-none pointer-events-none;
+  }
+  
+  /* Card Styles */
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden
+           transition-all duration-300 ease-in-out
+           hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .card-image {
+    @apply w-full h-48 object-cover transition-transform duration-500
+           group-hover:scale-110;
+  }
+  
+  /* Navigation Link */
+  .nav-link {
+    @apply relative font-heading font-medium text-sm uppercase tracking-wider
+           text-landora-dark transition-colors duration-300
+           hover:text-landora-primary
+           after:content-[''] after:absolute after:bottom-0 after:left-0 
+           after:w-0 after:h-0.5 after:bg-landora-primary
+           after:transition-all after:duration-300
+           hover:after:w-full;
+  }
+  
+  .nav-link.active {
+    @apply text-landora-primary after:w-full;
+  }
+  
+  /* Form Inputs */
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-sm
+           font-body text-landora-dark placeholder-gray-400
+           transition-all duration-300
+           focus:outline-none focus:border-landora-primary focus:ring-2 focus:ring-landora-accent/20;
+  }
+  
+  .form-textarea {
+    @apply form-input resize-none min-h-[150px];
+  }
+  
+  /* Section Container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+  
+  /* Image Overlay */
+  .image-overlay {
+    @apply absolute inset-0 bg-black/40 transition-opacity duration-300
+           group-hover:bg-black/60;
+  }
+  
+  /* Gallery Grid */
+  .gallery-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4;
+  }
+  
+  /* Stats Card */
+  .stats-card {
+    @apply text-center p-6;
+  }
+  
+  .stats-number {
+    @apply text-4xl md:text-5xl font-heading font-bold text-landora-primary;
+  }
+  
+  .stats-label {
+    @apply text-sm uppercase tracking-wider text-landora-muted mt-2;
+  }
+}
+
+@layer utilities {
+  /* Text Gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r 
+           from-landora-primary to-landora-accent;
+  }
+  
+  /* Aspect Ratios */
+  .aspect-hero {
+    aspect-ratio: 16 / 9;
+  }
+  
+  .aspect-property {
+    aspect-ratio: 4 / 3;
+  }
+  
+  .aspect-portrait {
+    aspect-ratio: 3 / 4;
+  }
+  
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-landora-primary rounded-full;
+  }
+  
+  /* Line Clamp */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
