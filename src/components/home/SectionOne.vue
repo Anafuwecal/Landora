@@ -1,12 +1,9 @@
 <template>
   <section class="section-container relative">
-    <!-- Section Number -->
-    <span class="section-number">01</span>
-    
     <div class="relative z-10">
       <SectionHeader
         subtitle="Welcome to LANDORA"
-        title="Pozniaky Construction LLC"
+        title="Landora Construction Company"
         description="Living spaces for creative professionals who value quality, design, and community."
       />
 

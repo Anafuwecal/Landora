@@ -1,8 +1,5 @@
 <template>
-  <section class="section-container relative">
-    <!-- Section Number -->
-    <span class="section-number">03</span>
-    
+  <section class="section-container relative">    
     <div class="relative z-10">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
         <SectionHeader
@@ -39,15 +36,12 @@
           <img
             :src="image.url"
             :alt="image.title"
-            class="w-full h-full object-cover transition-transform duration-500
-                   group-hover:scale-110"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             :class="index === 0 ? 'h-[400px] sm:h-full' : 'h-48 sm:h-56'"
           />
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 
-                      transition-colors duration-300 flex items-center justify-center">
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
             <MagnifyingGlassPlusIcon 
-              class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 
-                     transition-opacity duration-300" 
+              class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
             />
           </div>
         </div>
@@ -68,6 +62,7 @@ import { ref, onMounted } from 'vue'
 import SectionHeader from '@/components/common/SectionHeader.vue'
 import LightboxModal from '@/components/gallery/LightboxModal.vue'
 import { ArrowRightIcon, MagnifyingGlassPlusIcon } from '@heroicons/vue/24/outline'
+import { images, getGalleryImage } from '@/utils/images'
 
 const galleryRef = ref<HTMLElement | null>(null)
 const isGalleryVisible = ref(false)
@@ -75,11 +70,11 @@ const isLightboxOpen = ref(false)
 const lightboxIndex = ref(0)
 
 const galleryImages = [
-  { id: 1, url: '/images/gallery/gallery-1.jpg', title: 'Living Room' },
-  { id: 2, url: '/images/gallery/gallery-2.jpg', title: 'Kitchen' },
-  { id: 3, url: '/images/gallery/gallery-3.jpg', title: 'Bedroom' },
-  { id: 4, url: '/images/gallery/gallery-4.jpg', title: 'Bathroom' },
-  { id: 5, url: '/images/gallery/gallery-5.jpg', title: 'Balcony' },
+  { id: 1, url: getGalleryImage(0), title: 'Living Room' },
+  { id: 2, url: getGalleryImage(1), title: 'Kitchen' },
+  { id: 3, url: getGalleryImage(2), title: 'Bedroom' },
+  { id: 4, url: getGalleryImage(3), title: 'Bathroom' },
+  { id: 5, url: getGalleryImage(4), title: 'Balcony' },
 ]
 
 const openLightbox = (index: number) => {

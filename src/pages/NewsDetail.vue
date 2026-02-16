@@ -3,12 +3,11 @@
     <!-- Hero Section -->
     <section class="relative h-[50vh] min-h-[400px] flex items-center justify-center">
       <div class="absolute inset-0">
-        <img
-          src="/images/news/news-1.jpg"
-          alt="News Article"
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black/50" />
+        <div 
+          class="w-full h-full bg-cover bg-center"
+          :style="{ backgroundImage: `url(${heroImage})` }"
+        ></div>
+        <div class="absolute inset-0 bg-black/50"></div>
       </div>
       <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
         <span class="inline-block bg-landora-primary px-4 py-1 text-sm font-medium rounded mb-4">
@@ -72,7 +71,7 @@
 
         <!-- Back to News -->
         <div class="mt-8">
-          <RouterLink to="/news" class="btn-secondary">
+          <RouterLink to="/news" class="btn-secondary inline-flex items-center">
             <ArrowLeftIcon class="w-5 h-5 mr-2" />
             Back to News
           </RouterLink>
@@ -84,4 +83,6 @@
 
 <script setup lang="ts">
 import { CalendarIcon, UserIcon, ArrowLeftIcon } from '@heroicons/vue/24/outline'
+
+const heroImage = 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&auto=format&fit=crop&w=2073&q=80'
 </script>

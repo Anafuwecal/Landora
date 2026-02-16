@@ -3,12 +3,11 @@
     <!-- Hero Section -->
     <section class="relative h-[40vh] min-h-[300px] flex items-center justify-center">
       <div class="absolute inset-0">
-        <img
-          src="/images/facilities-hero.jpg"
-          alt="Facilities"
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black/50" />
+        <div 
+          class="w-full h-full bg-cover bg-center"
+          :style="{ backgroundImage: `url(${heroImage})` }"
+        ></div>
+        <div class="absolute inset-0 bg-black/50"></div>
       </div>
       <div class="relative z-10 text-center text-white px-4">
         <h1 class="text-4xl md:text-5xl font-heading font-bold uppercase tracking-wider mb-4">
@@ -29,8 +28,7 @@
       <SectionHeader
         subtitle="What We Offer"
         title="Premium Facilities & Amenities"
-        description="Every LANDORA property comes with world-class facilities designed to enhance 
-                     your living experience and provide maximum comfort."
+        description="Every LANDORA property comes with world-class facilities designed to enhance your living experience and provide maximum comfort."
         centered
       />
 
@@ -50,23 +48,18 @@
           :style="{ transitionDelay: `${index * 100}ms` }"
         >
           <!-- Icon/Image -->
-          <div class="relative h-48 bg-landora-light flex items-center justify-center
-                      group-hover:bg-landora-primary transition-colors duration-300">
-            <div class="w-20 h-20 rounded-full bg-landora-primary/10 
-                        flex items-center justify-center
-                        group-hover:bg-white/20 transition-colors duration-300">
+          <div class="relative h-48 bg-landora-light flex items-center justify-center group-hover:bg-landora-primary transition-colors duration-300">
+            <div class="w-20 h-20 rounded-full bg-landora-primary/10 flex items-center justify-center group-hover:bg-white/20 transition-colors duration-300">
               <component
                 :is="facility.icon"
-                class="w-10 h-10 text-landora-primary group-hover:text-white 
-                       transition-colors duration-300"
+                class="w-10 h-10 text-landora-primary group-hover:text-white transition-colors duration-300"
               />
             </div>
           </div>
 
           <!-- Content -->
           <div class="p-6">
-            <h3 class="text-xl font-heading font-semibold text-landora-dark mb-3
-                       group-hover:text-landora-primary transition-colors">
+            <h3 class="text-xl font-heading font-semibold text-landora-dark mb-3 group-hover:text-landora-primary transition-colors">
               {{ facility.title }}
             </h3>
             <p class="text-landora-muted">
@@ -85,8 +78,7 @@
             <SectionHeader
               subtitle="Quality Living"
               title="Designed for Your Comfort"
-              description="We believe that a home should be more than just a place to live. 
-                           It should be a sanctuary where every detail is considered for your wellbeing."
+              description="We believe that a home should be more than just a place to live. It should be a sanctuary where every detail is considered for your wellbeing."
             />
             <ul class="space-y-4 mb-8">
               <li class="flex items-start">
@@ -117,14 +109,14 @@
                 </div>
               </li>
             </ul>
-            <RouterLink to="/contact" class="btn-primary">
+            <RouterLink to="/contact" class="btn-primary inline-flex items-center">
               Learn More
               <ArrowRightIcon class="w-5 h-5 ml-2" />
             </RouterLink>
           </div>
           <div class="relative">
             <img
-              src="/images/facilities-comfort.jpg"
+              :src="comfortImage"
               alt="Comfort Living"
               class="w-full rounded-lg shadow-xl"
             />
@@ -156,6 +148,9 @@ import {
   VideoCameraIcon,
   BuildingOfficeIcon,
 } from '@heroicons/vue/24/outline'
+
+const heroImage = 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+const comfortImage = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
 
 const facilitiesRef = ref<HTMLElement | null>(null)
 const isFacilitiesVisible = ref(false)

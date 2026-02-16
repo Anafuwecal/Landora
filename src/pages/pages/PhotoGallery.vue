@@ -3,12 +3,11 @@
     <!-- Hero Section -->
     <section class="relative h-[40vh] min-h-[300px] flex items-center justify-center">
       <div class="absolute inset-0">
-        <img
-          src="/images/gallery-hero.jpg"
-          alt="Photo Gallery"
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black/50" />
+        <div 
+          class="w-full h-full bg-cover bg-center"
+          :style="{ backgroundImage: `url(${heroImage})` }"
+        ></div>
+        <div class="absolute inset-0 bg-black/50"></div>
       </div>
       <div class="relative z-10 text-center text-white px-4">
         <h1 class="text-4xl md:text-5xl font-heading font-bold uppercase tracking-wider mb-4">
@@ -29,15 +28,14 @@
       <SectionHeader
         subtitle="Our Portfolio"
         title="Explore Our Properties"
-        description="Browse through our collection of stunning property images showcasing 
-                     interiors, exteriors, and living spaces."
+        description="Browse through our collection of stunning property images showcasing interiors, exteriors, and living spaces."
         centered
       />
 
       <!-- Category Tabs -->
       <div class="flex flex-wrap justify-center gap-4 mb-12">
         <button
-          v-for="category in GALLERY_CATEGORIES"
+          v-for="category in categories"
           :key="category.id"
           @click="activeCategory = category.id"
           :class="[
@@ -52,56 +50,25 @@
         </button>
       </div>
 
-      <!-- Loading State -->
-      <div v-if="loading" class="flex justify-center py-12">
-        <LoadingSpinner size="lg" />
-      </div>
-
       <!-- Gallery Grid -->
-      <TransitionGroup
-        v-else
-        name="gallery"
-        tag="div"
-        class="gallery-grid"
-      >
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         <div
           v-for="(image, index) in filteredImages"
           :key="image.id"
-          class="group relative aspect-property overflow-hidden rounded-lg cursor-pointer"
+          class="group relative aspect-square overflow-hidden rounded-lg cursor-pointer"
           @click="openLightbox(index)"
         >
           <img
             :src="image.url"
-            :alt="image.title || 'Gallery image'"
-            class="w-full h-full object-cover transition-transform duration-500
-                   group-hover:scale-110"
+            :alt="image.title"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 
-                      transition-colors duration-300 flex items-center justify-center">
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
             <MagnifyingGlassPlusIcon 
-              class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 
-                     transition-opacity duration-300" 
+              class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
             />
           </div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent
-                      translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-            <p class="text-white text-sm font-medium">
-              {{ image.title || 'View Image' }}
-            </p>
-            <p class="text-white/70 text-xs capitalize">
-              {{ image.category }}
-            </p>
-          </div>
         </div>
-      </TransitionGroup>
-
-      <!-- Empty State -->
-      <div
-        v-if="!loading && filteredImages.length === 0"
-        class="text-center py-12"
-      >
-        <PhotoIcon class="w-16 h-16 text-gray-300 mx-auto mb-4" />
-        <p class="text-landora-muted">No images found in this category.</p>
       </div>
     </section>
 
@@ -115,76 +82,44 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import SectionHeader from '@/components/common/SectionHeader.vue'
-import LoadingSpinner from '@/components/common/LoadingSpinner.vue'
 import LightboxModal from '@/components/gallery/LightboxModal.vue'
-import { GALLERY_CATEGORIES } from '@/utils/constants'
-import { fetchGalleryImages } from '@/composables/useApi'
-import type { GalleryImage } from '@/types'
-import {
-  ChevronRightIcon,
-  MagnifyingGlassPlusIcon,
-  PhotoIcon,
-} from '@heroicons/vue/24/outline'
+import { ChevronRightIcon, MagnifyingGlassPlusIcon } from '@heroicons/vue/24/outline'
+
+const heroImage = 'https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2053&q=80'
 
 const activeCategory = ref('all')
-const images = ref<GalleryImage[]>([])
-const loading = ref(true)
 const isLightboxOpen = ref(false)
 const lightboxIndex = ref(0)
 
+const categories = [
+  { id: 'all', label: 'All Area' },
+  { id: 'interior', label: 'Interior' },
+  { id: 'building', label: 'Building' },
+  { id: 'spaces', label: 'Spaces' },
+]
+
+const images = [
+  { id: 1, url: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', title: 'Living Room', category: 'interior' },
+  { id: 2, url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', title: 'Exterior View', category: 'building' },
+  { id: 3, url: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', title: 'Kitchen', category: 'interior' },
+  { id: 4, url: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', title: 'Bedroom', category: 'interior' },
+  { id: 5, url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', title: 'Building Front', category: 'building' },
+  { id: 6, url: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', title: 'Lounge Area', category: 'spaces' },
+  { id: 7, url: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', title: 'Dining Room', category: 'interior' },
+  { id: 8, url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', title: 'Garden View', category: 'spaces' },
+]
+
 const filteredImages = computed(() => {
   if (activeCategory.value === 'all') {
-    return images.value
+    return images
   }
-  return images.value.filter(img => img.category === activeCategory.value)
+  return images.filter(img => img.category === activeCategory.value)
 })
 
 const openLightbox = (index: number) => {
   lightboxIndex.value = index
   isLightboxOpen.value = true
 }
-
-onMounted(async () => {
-  try {
-    images.value = await fetchGalleryImages()
-  } catch (error) {
-    console.error('Failed to fetch gallery images:', error)
-    // Use mock data as fallback
-    images.value = [
-      { id: '1', url: '/images/gallery/gallery-1.jpg', title: 'Modern Living Room', category: 'interior', order: 1, active: true },
-      { id: '2', url: '/images/gallery/gallery-2.jpg', title: 'Gourmet Kitchen', category: 'interior', order: 2, active: true },
-      { id: '3', url: '/images/gallery/gallery-3.jpg', title: 'Master Bedroom', category: 'interior', order: 3, active: true },
-      { id: '4', url: '/images/gallery/gallery-4.jpg', title: 'Building Exterior', category: 'building', order: 4, active: true },
-      { id: '5', url: '/images/gallery/gallery-5.jpg', title: 'Rooftop Terrace', category: 'spaces', order: 5, active: true },
-      { id: '6', url: '/images/gallery/gallery-6.jpg', title: 'Swimming Pool', category: 'spaces', order: 6, active: true },
-      { id: '7', url: '/images/gallery/gallery-7.jpg', title: 'Lobby Entrance', category: 'building', order: 7, active: true },
-      { id: '8', url: '/images/gallery/gallery-8.jpg', title: 'Bathroom Suite', category: 'interior', order: 8, active: true },
-    ]
-  } finally {
-    loading.value = false
-  }
-})
 </script>
-
-<style scoped>
-.gallery-enter-active,
-.gallery-leave-active {
-  transition: all 0.5s ease;
-}
-
-.gallery-enter-from {
-  opacity: 0;
-  transform: scale(0.9);
-}
-
-.gallery-leave-to {
-  opacity: 0;
-  transform: scale(0.9);
-}
-
-.gallery-move {
-  transition: transform 0.5s ease;
-}
-</style>

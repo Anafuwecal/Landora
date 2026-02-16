@@ -3,12 +3,11 @@
     <!-- Hero Section -->
     <section class="relative h-[40vh] min-h-[300px] flex items-center justify-center">
       <div class="absolute inset-0">
-        <img
-          src="/images/news/news-hero.jpg"
-          alt="News"
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black/50" />
+        <div 
+          class="w-full h-full bg-cover bg-center"
+          :style="{ backgroundImage: `url(${heroImage})` }"
+        ></div>
+        <div class="absolute inset-0 bg-black/50"></div>
       </div>
       <div class="relative z-10 text-center text-white px-4">
         <h1 class="text-4xl md:text-5xl font-heading font-bold uppercase tracking-wider mb-4">
@@ -120,7 +119,6 @@
 </template>
 
 <script setup lang="ts">
-import { formatDate } from '@/utils/helpers'
 import {
   ChevronRightIcon,
   CalendarIcon,
@@ -128,18 +126,28 @@ import {
   MagnifyingGlassIcon,
 } from '@heroicons/vue/24/outline'
 
+const heroImage = 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+
+const formatDate = (date: Date): string => {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date)
+}
+
 const categories = ['Company News', 'Market Insights', 'Projects', 'Tips & Advice', 'Events']
-const tags = ['development', 'luxury', 'kyiv', 'investment', 'sustainability', 'design']
+const tags = ['development', 'luxury', 'Lagos', 'investment', 'sustainability', 'design']
 
 const newsPosts = [
   {
     id: 1,
     slug: 'new-development-announced',
-    title: 'New Luxury Development Announced in Central Kyiv',
+    title: 'New Luxury Development Announced in Central Lagos',
     excerpt: 'We are excited to announce our newest development project, featuring 120 premium apartments with stunning city views.',
-    image: '/images/news/news-1.jpg',
+    image: 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     author: 'Admin',
-    tags: ['development', 'luxury', 'kyiv'],
+    tags: ['development', 'luxury', 'Lagos'],
     publishedAt: new Date('2024-01-15'),
   },
   {
@@ -147,7 +155,7 @@ const newsPosts = [
     slug: 'market-trends-2024',
     title: 'Real Estate Market Trends to Watch in 2024',
     excerpt: 'Our experts analyze the key trends shaping the real estate market this year and what they mean for buyers.',
-    image: '/images/news/news-2.jpg',
+    image: 'https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     author: 'Maria K.',
     tags: ['market', 'trends', 'investment'],
     publishedAt: new Date('2024-01-10'),
@@ -157,10 +165,19 @@ const newsPosts = [
     slug: 'sustainability-focus',
     title: 'Sustainability at the Heart of Modern Living',
     excerpt: 'Learn how LANDORA is incorporating sustainable building practices and eco-friendly features in all our developments.',
-    image: '/images/news/news-3.jpg',
+    image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     author: 'Alex P.',
     tags: ['sustainability', 'eco', 'green'],
     publishedAt: new Date('2024-01-05'),
   },
 ]
 </script>
+
+<style scoped>
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+</style>

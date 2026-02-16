@@ -1,7 +1,5 @@
 <template>
   <section class="section-container relative">
-    <!-- Section Number -->
-    <span class="section-number">09</span>
     
     <div class="relative z-10">
       <SectionHeader
@@ -20,17 +18,17 @@
           v-for="(cert, index) in certificates"
           :key="cert.id"
           :class="[
-            'bg-white rounded-lg shadow-sm p-6 flex items-center justify-center',
+            'bg-white rounded-lg shadow-sm p-6 flex flex-col items-center justify-center',
             'hover:shadow-lg transition-all duration-300',
             isCertificatesVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           ]"
           :style="{ transitionDelay: `${index * 100}ms` }"
         >
-          <img
-            :src="cert.image"
-            :alt="cert.title"
-            class="max-h-16 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+          <component 
+            :is="cert.icon" 
+            class="w-12 h-12 text-landora-primary mb-3"
           />
+          <span class="text-sm font-medium text-landora-dark text-center">{{ cert.title }}</span>
         </div>
       </div>
 
@@ -40,7 +38,7 @@
           All our properties undergo rigorous quality checks and are certified to 
           international standards.
         </p>
-        <RouterLink to="/pages/certificates" class="btn-secondary">
+        <RouterLink to="/pages/certificates" class="btn-secondary inline-flex items-center">
           View All Certificates
           <ArrowRightIcon class="w-5 h-5 ml-2" />
         </RouterLink>
@@ -52,18 +50,26 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import SectionHeader from '@/components/common/SectionHeader.vue'
-import { ArrowRightIcon } from '@heroicons/vue/24/outline'
+import { 
+  ArrowRightIcon,
+  ShieldCheckIcon,
+  CheckBadgeIcon,
+  StarIcon,
+  TrophyIcon,
+  SparklesIcon,
+  HandThumbUpIcon,
+} from '@heroicons/vue/24/outline'
 
 const certificatesRef = ref<HTMLElement | null>(null)
 const isCertificatesVisible = ref(false)
 
 const certificates = [
-  { id: 1, title: 'ISO 9001', image: '/images/certificates/iso-9001.png' },
-  { id: 2, title: 'Green Building', image: '/images/certificates/green-building.png' },
-  { id: 3, title: 'Energy Star', image: '/images/certificates/energy-star.png' },
-  { id: 4, title: 'LEED Certified', image: '/images/certificates/leed.png' },
-  { id: 5, title: 'Safety Award', image: '/images/certificates/safety.png' },
-  { id: 6, title: 'Quality Mark', image: '/images/certificates/quality.png' },
+  { id: 1, title: 'ISO 9001', icon: ShieldCheckIcon },
+  { id: 2, title: 'Green Building', icon: SparklesIcon },
+  { id: 3, title: 'Energy Star', icon: StarIcon },
+  { id: 4, title: 'LEED Certified', icon: CheckBadgeIcon },
+  { id: 5, title: 'Safety Award', icon: TrophyIcon },
+  { id: 6, title: 'Quality Mark', icon: HandThumbUpIcon },
 ]
 
 onMounted(() => {

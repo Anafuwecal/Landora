@@ -3,12 +3,11 @@
     <!-- Hero Section -->
     <section class="relative h-[40vh] min-h-[300px] flex items-center justify-center">
       <div class="absolute inset-0">
-        <img
-          src="/images/offices/offices-hero.jpg"
-          alt="Sales Offices"
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black/50" />
+        <div 
+          class="w-full h-full bg-cover bg-center"
+          :style="{ backgroundImage: `url(${heroImage})` }"
+        ></div>
+        <div class="absolute inset-0 bg-black/50"></div>
       </div>
       <div class="relative z-10 text-center text-white px-4">
         <h1 class="text-4xl md:text-5xl font-heading font-bold uppercase tracking-wider mb-4">
@@ -88,37 +87,39 @@ import {
   ArrowTopRightOnSquareIcon,
 } from '@heroicons/vue/24/outline'
 
+const heroImage = 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80'
+
 const offices = [
   {
     id: 1,
-    name: 'Kyiv - Pechersk Office',
-    city: 'Kyiv',
-    country: 'Ukraine',
-    address: 'Khreshchatyk 15th Street, Floor 17',
-    phone: '+380 98 123 4567',
-    email: 'pechersk@landora.com',
+    name: 'Lagos - Victoria Island Office',
+    city: 'Lagos',
+    country: 'Nigeria',
+    address: 'Landmark 15th Street, Floor 13',
+    phone: '+234 90 123 4567',
+    email: 'island@landora.com',
     hours: 'Mon-Fri: 9:00 AM - 6:00 PM',
     mapUrl: 'https://maps.google.com',
   },
   {
     id: 2,
-    name: 'Kyiv - Pozniaky Office',
-    city: 'Kyiv',
-    country: 'Ukraine',
-    address: 'Pozniaky District, Building 42',
-    phone: '+380 98 234 5678',
-    email: 'pozniaky@landora.com',
+    name: 'Lagos - Ajah Office',
+    city: 'Lagos',
+    country: 'Nigeria',
+    address: 'Lekki District,  Floor 12',
+    phone: '+234 90 234 5678',
+    email: 'ajah@landora.com',
     hours: 'Mon-Fri: 9:00 AM - 6:00 PM',
     mapUrl: 'https://maps.google.com',
   },
   {
     id: 3,
-    name: 'Lviv Office',
-    city: 'Lviv',
-    country: 'Ukraine',
-    address: 'Svobody Avenue 28, Floor 5',
-    phone: '+380 98 345 6789',
-    email: 'lviv@landora.com',
+    name: 'Ikeja Office',
+    city: 'Lagos',
+    country: 'Nigeria',
+    address: 'Sangota Avenue 28, Floor 5',
+    phone: '+234 90 345 6789',
+    email: 'ikeja@landora.com',
     hours: 'Mon-Fri: 9:00 AM - 5:00 PM',
     mapUrl: 'https://maps.google.com',
   },

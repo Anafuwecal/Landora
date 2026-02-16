@@ -3,12 +3,11 @@
     <!-- Hero Section -->
     <section class="relative h-[40vh] min-h-[300px] flex items-center justify-center">
       <div class="absolute inset-0">
-        <img
-          src="/images/press/press-hero.jpg"
-          alt="Press Releases"
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black/50" />
+        <div 
+          class="w-full h-full bg-cover bg-center"
+          :style="{ backgroundImage: `url(${heroImage})` }"
+        ></div>
+        <div class="absolute inset-0 bg-black/50"></div>
       </div>
       <div class="relative z-10 text-center text-white px-4">
         <h1 class="text-4xl md:text-5xl font-heading font-bold uppercase tracking-wider mb-4">
@@ -42,11 +41,9 @@
           class="group bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-all hover:-translate-y-1"
         >
           <div class="h-16 mb-6 flex items-center">
-            <img
-              :src="press.logo"
-              :alt="press.mediaName"
-              class="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 transition-all"
-            />
+            <div class="w-full h-full bg-landora-light rounded flex items-center justify-center">
+              <NewspaperIcon class="w-8 h-8 text-landora-primary" />
+            </div>
           </div>
           <h3 class="text-lg font-heading font-semibold text-landora-dark mb-2 group-hover:text-landora-primary transition-colors">
             {{ press.headline }}
@@ -62,55 +59,58 @@
 
 <script setup lang="ts">
 import SectionHeader from '@/components/common/SectionHeader.vue'
-import { ChevronRightIcon } from '@heroicons/vue/24/outline'
-import { formatDate } from '@/utils/helpers'
+import { ChevronRightIcon, NewspaperIcon } from '@heroicons/vue/24/outline'
+
+const heroImage = 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+
+const formatDate = (date: Date): string => {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date)
+}
 
 const pressReleases = [
   {
     id: 1,
-    mediaName: 'New York Times',
-    headline: 'LANDORA Sets New Standard for Luxury Living in Ukraine',
-    logo: '/images/press/nyt-logo.png',
+    mediaName: 'Punch',
+    headline: 'LANDORA Sets New Standard for Luxury Living in Lagos',
     url: 'https://nytimes.com',
     publishedAt: new Date('2024-01-15'),
   },
   {
     id: 2,
-    mediaName: 'Real Estate Magazine',
+    mediaName: 'Punch',
     headline: 'Top 10 Developers to Watch in 2024',
-    logo: '/images/press/rem-logo.png',
     url: 'https://example.com',
     publishedAt: new Date('2024-01-10'),
   },
   {
     id: 3,
-    mediaName: 'Forbes Ukraine',
+    mediaName: 'Governors',
     headline: 'How LANDORA is Transforming Urban Living',
-    logo: '/images/press/forbes-logo.png',
     url: 'https://forbes.com',
     publishedAt: new Date('2023-12-20'),
   },
   {
     id: 4,
-    mediaName: 'Architecture Today',
+    mediaName: 'Punch',
     headline: 'Award-Winning Design at Landora Blocks',
-    logo: '/images/press/arch-logo.png',
     url: 'https://example.com',
     publishedAt: new Date('2023-12-15'),
   },
   {
     id: 5,
-    mediaName: 'Business Weekly',
+    mediaName: 'Punch',
     headline: 'LANDORA Announces New Development Project',
-    logo: '/images/press/bw-logo.png',
     url: 'https://example.com',
     publishedAt: new Date('2023-12-01'),
   },
   {
     id: 6,
-    mediaName: 'Property Times',
+    mediaName: 'Punch',
     headline: 'Sustainable Building Practices at LANDORA',
-    logo: '/images/press/pt-logo.png',
     url: 'https://example.com',
     publishedAt: new Date('2023-11-25'),
   },

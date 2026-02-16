@@ -3,12 +3,11 @@
     <!-- Hero Section -->
     <section class="relative h-[40vh] min-h-[300px] flex items-center justify-center">
       <div class="absolute inset-0">
-        <img
-          src="/images/apartments/apartments-hero.jpg"
-          alt="Apartments"
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black/50" />
+        <div 
+          class="w-full h-full bg-cover bg-center"
+          :style="{ backgroundImage: `url(${heroImage})` }"
+        ></div>
+        <div class="absolute inset-0 bg-black/50"></div>
       </div>
       <div class="relative z-10 text-center text-white px-4">
         <h1 class="text-4xl md:text-5xl font-heading font-bold uppercase tracking-wider mb-4">
@@ -38,7 +37,7 @@
           v-for="apartment in apartments"
           :key="apartment.slug"
           :to="`/apartments/${apartment.slug}`"
-          class="group card overflow-hidden"
+          class="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
         >
           <div class="relative h-64 overflow-hidden">
             <img
@@ -77,6 +76,8 @@
 import SectionHeader from '@/components/common/SectionHeader.vue'
 import { ChevronRightIcon, HomeIcon } from '@heroicons/vue/24/outline'
 
+const heroImage = 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2053&q=80'
+
 const apartments = [
   {
     slug: 'one-room',
@@ -84,7 +85,7 @@ const apartments = [
     area: 47,
     rooms: 1,
     price: 85000,
-    image: '/images/apartments/one-room.jpg',
+    image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     description: 'Perfect for singles or couples, featuring an open-plan living area with modern amenities.',
   },
   {
@@ -93,7 +94,7 @@ const apartments = [
     area: 65,
     rooms: 2,
     price: 120000,
-    image: '/images/apartments/two-rooms.jpg',
+    image: 'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     description: 'Ideal for small families, with a separate bedroom and spacious living area.',
   },
   {
@@ -102,7 +103,7 @@ const apartments = [
     area: 90,
     rooms: 3,
     price: 175000,
-    image: '/images/apartments/three-rooms.jpg',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     description: 'Generous family living with multiple bedrooms and premium finishes throughout.',
   },
 ]

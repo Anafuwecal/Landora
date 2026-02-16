@@ -8,11 +8,6 @@
     </div>
 
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="text-9xl font-heading font-bold text-white/5 absolute left-1/2 
-                   -translate-x-1/2 -top-8">
-        06
-      </span>
-      
       <span class="inline-block text-sm font-heading font-medium uppercase 
                    tracking-widest text-landora-accent mb-4">
         Get Started Today

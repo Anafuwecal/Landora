@@ -1,17 +1,17 @@
 import type { HeroSlide, NavItem } from '@/types'
+import { images } from './images'
 
 export const SITE_NAME = 'LANDORA'
 export const SITE_TAGLINE = 'Luxury Real Estate'
 export const CONTACT_EMAIL = 'hello@landora.com'
-export const CONTACT_PHONE = '+234(0)813-282-5644'
-export const ADDRESS = 'Igbolomu 10th Street, Floor 3, Ikorodu, Lagos'
+export const CONTACT_PHONE = '+234(0)813-459-7344'
+export const ADDRESS = 'Igbolomu 10th Street, Lagos, Nigeria'
 
 // Navigation Items
 export const NAV_ITEMS: NavItem[] = [
   {
     label: 'LANDORA',
     children: [
-      { label: 'Zaga Construction', path: '/about/zaga-construction' },
       { label: 'About Landora', path: '/about/landora' },
       { label: 'Landora Blocks', path: '/about/blocks' },
     ]
@@ -32,9 +32,9 @@ export const NAV_ITEMS: NavItem[] = [
   {
     label: 'APARTMENTS',
     children: [
-      { label: '1 Room 37m²', path: '/apartments/one-room' },
+      { label: '1 Room 47m²', path: '/apartments/one-room' },
       { label: '2 Rooms 65m²', path: '/apartments/two-rooms' },
-      { label: '3 Rooms 50m²', path: '/apartments/three-rooms' },
+      { label: '3 Rooms 90m²', path: '/apartments/three-rooms' },
     ]
   },
   { label: 'FACILITIES', path: '/facilities' },
@@ -46,15 +46,15 @@ export const NAV_ITEMS: NavItem[] = [
 export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 1,
-    image: '/images/hero/slide-1.jpg',
+    image: images.hero.slide1,
     title: 'Luxury Residences',
-    subtitle: 'Living Spaces in Pechersk – Kyiv',
+    subtitle: 'Living Spaces in Lagos, Nigeria',
     ctaText: 'GET A CONSULTATION',
     ctaLink: '/contact'
   },
   {
     id: 2,
-    image: '/images/hero/slide-2.jpg',
+    image: images.hero.slide2,
     title: 'Modern Living',
     subtitle: 'Premium Apartments with City Views',
     ctaText: 'GET A CONSULTATION',
@@ -62,7 +62,7 @@ export const HERO_SLIDES: HeroSlide[] = [
   },
   {
     id: 3,
-    image: '/images/hero/slide-3.jpg',
+    image: images.hero.slide3,
     title: 'Your Dream Home',
     subtitle: 'Exclusive Properties for Discerning Buyers',
     ctaText: 'GET A CONSULTATION',
@@ -72,10 +72,10 @@ export const HERO_SLIDES: HeroSlide[] = [
 
 // Property Stats
 export const PROPERTY_STATS = [
-  { number: '0', label: 'Min to Subway', suffix: 'min' },
-  { number: '250', label: 'Total Spaces', suffix: '+' },
-  { number: '15', label: 'Years Experience', suffix: '+' },
-  { number: '12000', label: 'Square Meters', suffix: 'm²' }
+  { number: '4', label: 'Min to Subway', suffix: 'min' },
+  { number: '350', label: 'Total Spaces', suffix: '+' },
+  { number: '19', label: 'Years Experience', suffix: '+' },
+  { number: '15000', label: 'Square Meters', suffix: 'm²' }
 ]
 
 // Facility Categories

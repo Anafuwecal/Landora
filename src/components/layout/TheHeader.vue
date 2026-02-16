@@ -13,13 +13,19 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between py-2 text-sm">
           <div class="flex items-center space-x-6 text-white">
-            <a :href="`tel:${CONTACT_PHONE}`" class="flex items-center hover:text-landora-accent transition-colors">
-              <PhoneIcon class="w-4 h-4 mr-2" />
-              {{ CONTACT_PHONE }}
+            <a 
+              :href="`tel:${CONTACT_PHONE}`" 
+              class="flex items-center hover:text-landora-accent transition-colors whitespace-nowrap"
+            >
+              <PhoneIcon class="w-4 h-4 mr-2 flex-shrink-0" />
+              <span class="whitespace-nowrap">{{ CONTACT_PHONE }}</span>
             </a>
-            <a :href="`mailto:${CONTACT_EMAIL}`" class="flex items-center hover:text-landora-accent transition-colors">
-              <EnvelopeIcon class="w-4 h-4 mr-2" />
-              {{ CONTACT_EMAIL }}
+            <a 
+              :href="`mailto:${CONTACT_EMAIL}`" 
+              class="flex items-center hover:text-landora-accent transition-colors whitespace-nowrap"
+            >
+              <EnvelopeIcon class="w-4 h-4 mr-2 flex-shrink-0" />
+              <span class="whitespace-nowrap">{{ CONTACT_EMAIL }}</span>
             </a>
           </div>
           <div class="flex items-center space-x-4">
@@ -45,16 +51,16 @@
                 UA
               </button>
             </div>
-            <!-- Social Links -->
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-2">
               <a
                 v-for="social in SOCIAL_LINKS"
                 :key="social.name"
                 :href="social.url"
                 target="_blank"
                 class="text-white hover:text-landora-accent transition-colors"
+                :aria-label="social.name"
               >
-                <component :is="getSocialIcon(social.icon)" class="w-4 h-4" />
+                <component :is="getSocialIcon(social.icon)" class="w-2 h-2" />
               </a>
             </div>
           </div>

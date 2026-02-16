@@ -3,12 +3,11 @@
     <!-- Hero Section -->
     <section class="relative h-[40vh] min-h-[300px] flex items-center justify-center">
       <div class="absolute inset-0">
-        <img
-          src="/images/about/blocks-hero.jpg"
-          alt="Landora Blocks"
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black/50" />
+        <div 
+          class="w-full h-full bg-cover bg-center"
+          :style="{ backgroundImage: `url(${heroImage})` }"
+        ></div>
+        <div class="absolute inset-0 bg-black/50"></div>
       </div>
       <div class="relative z-10 text-center text-white px-4">
         <h1 class="text-4xl md:text-5xl font-heading font-bold uppercase tracking-wider mb-4">
@@ -38,7 +37,7 @@
         <div
           v-for="block in blocks"
           :key="block.id"
-          class="group card overflow-hidden"
+          class="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
         >
           <div class="relative h-64 overflow-hidden">
             <img
@@ -70,30 +69,33 @@
 import SectionHeader from '@/components/common/SectionHeader.vue'
 import { ChevronRightIcon } from '@heroicons/vue/24/outline'
 
+// Use online placeholder images
+const heroImage = 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1935&q=80'
+
 const blocks = [
   {
     id: 1,
-    name: 'Block A - Sunrise Tower',
-    location: 'Pozniaky, Kyiv',
-    image: '/images/blocks/block-a.jpg',
+    name: 'Block A - City Tower',
+    location: 'Ikeja, Lagos',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
     units: 120,
     floors: 16,
     status: 'Available',
   },
   {
     id: 2,
-    name: 'Block B - Garden View',
-    location: 'Pechersk, Kyiv',
-    image: '/images/blocks/block-b.jpg',
+    name: 'Block B - Sunrise View',
+    location: 'Victoria Island, Lagos',
+    image: 'https://images.unsplash.com/photo-1515263487990-61b07816b324?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
     units: 80,
     floors: 12,
     status: 'Sold Out',
   },
   {
     id: 3,
-    name: 'Block C - City Center',
-    location: 'Khreshchatyk, Kyiv',
-    image: '/images/blocks/block-c.jpg',
+    name: 'Block C - Garden Center',
+    location: 'Ajah, Lagos',
+    image: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
     units: 60,
     floors: 10,
     status: 'Coming Soon',

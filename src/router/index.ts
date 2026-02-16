@@ -10,12 +10,6 @@ const routes: RouteRecordRaw[] = [
   },
   // About section
   {
-    path: '/about/zaga-construction',
-    name: 'ZagaConstruction',
-    component: () => import('@/pages/about/ZagaConstruction.vue'),
-    meta: { title: 'Zaga Construction | LANDORA' }
-  },
-  {
     path: '/about/landora',
     name: 'AboutLandora',
     component: () => import('@/pages/about/AboutLandora.vue'),

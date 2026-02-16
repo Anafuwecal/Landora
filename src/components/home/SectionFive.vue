@@ -1,7 +1,5 @@
 <template>
   <section class="section-container relative">
-    <!-- Section Number -->
-    <span class="section-number">05</span>
     
     <div class="relative z-10">
       <SectionHeader
@@ -31,19 +29,16 @@
             <img
               :src="apartment.image"
               :alt="apartment.title"
-              class="w-full h-full object-cover transition-transform duration-500
-                     group-hover:scale-110"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
-            <div class="absolute top-4 right-4 bg-landora-primary text-white 
-                        px-3 py-1 text-sm font-heading font-semibold rounded">
+            <div class="absolute top-4 right-4 bg-landora-primary text-white px-3 py-1 text-sm font-heading font-semibold rounded">
               {{ apartment.area }}m²
             </div>
           </div>
 
           <!-- Content -->
           <div class="p-6">
-            <h3 class="text-xl font-heading font-semibold text-landora-dark mb-2
-                       group-hover:text-landora-primary transition-colors">
+            <h3 class="text-xl font-heading font-semibold text-landora-dark mb-2 group-hover:text-landora-primary transition-colors">
               {{ apartment.title }}
             </h3>
             <p class="text-landora-muted text-sm mb-4">
@@ -51,8 +46,7 @@
             </p>
             
             <!-- Features -->
-            <div class="flex items-center justify-between text-sm text-landora-muted 
-                        pt-4 border-t">
+            <div class="flex items-center justify-between text-sm text-landora-muted pt-4 border-t">
               <div class="flex items-center">
                 <HomeIcon class="w-4 h-4 mr-1" />
                 <span>{{ apartment.rooms }} {{ apartment.rooms === 1 ? 'Room' : 'Rooms' }}</span>
@@ -81,6 +75,7 @@
 import { ref, onMounted } from 'vue'
 import SectionHeader from '@/components/common/SectionHeader.vue'
 import { HomeIcon, CurrencyDollarIcon, ArrowRightIcon } from '@heroicons/vue/24/outline'
+import { images } from '@/utils/images'
 
 const cardsRef = ref<HTMLElement | null>(null)
 const isCardsVisible = ref(false)
@@ -92,7 +87,7 @@ const apartments = [
     area: 47,
     rooms: 1,
     price: 85000,
-    image: '/images/apartments/one-room.jpg',
+    image: images.property.oneRoom,
     description: 'Perfect for singles or couples, featuring an open-plan living area with modern amenities.',
   },
   {
@@ -101,7 +96,7 @@ const apartments = [
     area: 65,
     rooms: 2,
     price: 120000,
-    image: '/images/apartments/two-rooms.jpg',
+    image: images.property.twoRooms,
     description: 'Ideal for small families, with a separate bedroom and spacious living area.',
   },
   {
@@ -110,7 +105,7 @@ const apartments = [
     area: 90,
     rooms: 3,
     price: 175000,
-    image: '/images/apartments/three-rooms.jpg',
+    image: images.property.threeRooms,
     description: 'Generous family living with multiple bedrooms and premium finishes throughout.',
   },
 ]

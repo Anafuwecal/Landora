@@ -127,35 +127,48 @@
     </div>
 
     <!-- Newsletter Section -->
-    <div class="border-t border-white/10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="flex flex-col md:flex-row items-center justify-between">
-          <div class="mb-4 md:mb-0">
-            <h5 class="text-lg font-heading font-semibold mb-1">
-              Subscribe to Our Newsletter
-            </h5>
-            <p class="text-gray-400 text-sm">
-              Get the latest updates on new properties and exclusive offers.
-            </p>
-          </div>
-          <form @submit.prevent="handleSubscribe" class="flex w-full md:w-auto">
-            <input
-              v-model="email"
-              type="email"
-              placeholder="Enter your email"
-              class="flex-1 md:w-64 px-4 py-3 bg-white/10 border border-white/20 rounded-l-sm text-white placeholder-gray-400 focus:outline-none focus:border-landora-accent"
-              required
-            />
-            <button
-              type="submit"
-              class="px-6 py-3 bg-landora-primary text-white font-heading font-semibold uppercase text-sm tracking-wider rounded-r-sm hover:bg-landora-secondary transition-colors"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
+<div class="border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+      <div class="text-center lg:text-left">
+        <h5 class="text-lg font-heading font-semibold mb-1">
+          Subscribe to Our Newsletter
+        </h5>
+        <p class="text-gray-400 text-sm">
+          Get the latest updates on new properties and exclusive offers.
+        </p>
       </div>
+      
+      <!-- Responsive Form -->
+      <form @submit.prevent="handleSubscribe" class="w-full sm:w-auto">
+        <!-- Stacked on mobile, inline on sm+ -->
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-0">
+          <input
+            v-model="email"
+            type="email"
+            placeholder="Enter your email"
+            class="w-full sm:w-64 md:w-72 px-4 py-3 bg-white/10 border border-white/20 
+                   rounded-sm sm:rounded-l-sm sm:rounded-r-none
+                   text-white placeholder-gray-400 
+                   focus:outline-none focus:border-landora-accent
+                   text-base"
+            required
+          />
+          <button
+            type="submit"
+            class="w-full sm:w-auto px-6 py-3 bg-landora-primary text-white 
+                   font-heading font-semibold uppercase text-sm tracking-wider 
+                   rounded-sm sm:rounded-l-none sm:rounded-r-sm
+                   hover:bg-landora-secondary transition-colors
+                   whitespace-nowrap"
+          >
+            Subscribe
+          </button>
+        </div>
+      </form>
     </div>
+  </div>
+</div>
 
     <!-- Copyright -->
     <div class="bg-black/20">

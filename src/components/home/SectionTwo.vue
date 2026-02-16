@@ -1,8 +1,6 @@
 <template>
   <section class="bg-landora-light">
     <div class="section-container relative">
-      <!-- Section Number -->
-      <span class="section-number text-gray-200">02</span>
       
       <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <!-- Image -->
@@ -14,7 +12,7 @@
           ]"
         >
           <img
-            src="/images/property-featured.jpg"
+            :src="images.property.featured"
             alt="Featured Property"
             class="w-full h-[500px] object-cover"
           />
@@ -26,7 +24,7 @@
             <h3 class="text-2xl font-heading font-bold mt-2">
               Landora Property
             </h3>
-            <p class="text-white/80">Decorated Flats in Pozniaky – Kyiv</p>
+            <p class="text-white/80">Decorated Flats in Lagos</p>
           </div>
         </div>
 
@@ -41,18 +39,18 @@
           <SectionHeader
             subtitle="Featured Development"
             title="Landora Property"
-            description="Experience the pinnacle of modern living in the heart of Kyiv. Our flagship development offers unparalleled comfort and style."
+            description="Experience the pinnacle of modern living in the heart of Lagos. Our flagship development offers unparalleled comfort and style."
           />
 
           <!-- Stats Grid -->
           <div class="grid grid-cols-2 gap-6 mb-8">
             <div
-              v-for="stat in stats"
+              v-for="(stat, index) in stats"
               :key="stat.label"
               class="stats-card bg-white rounded-lg shadow-md"
             >
               <div class="stats-number flex items-baseline justify-center">
-                <span ref="countRefs">{{ stat.displayValue }}</span>
+                <span>{{ stat.displayValue }}</span>
                 <span class="text-2xl ml-1">{{ stat.suffix }}</span>
               </div>
               <p class="stats-label">{{ stat.label }}</p>
@@ -74,6 +72,7 @@ import { ref, onMounted } from 'vue'
 import SectionHeader from '@/components/common/SectionHeader.vue'
 import { ArrowRightIcon } from '@heroicons/vue/24/outline'
 import { PROPERTY_STATS } from '@/utils/constants'
+import { images } from '@/utils/images'
 
 const imageRef = ref<HTMLElement | null>(null)
 const statsRef = ref<HTMLElement | null>(null)
@@ -115,7 +114,6 @@ onMounted(() => {
         }
         if (entry.target === statsRef.value && entry.isIntersecting) {
           isStatsVisible.value = true
-          // Animate counters
           PROPERTY_STATS.forEach((stat, index) => {
             setTimeout(() => {
               animateCount(index, parseInt(stat.number))

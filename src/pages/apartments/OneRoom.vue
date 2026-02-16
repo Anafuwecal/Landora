@@ -3,12 +3,11 @@
     <!-- Hero Section -->
     <section class="relative h-[50vh] min-h-[400px] flex items-center justify-center">
       <div class="absolute inset-0">
-        <img
-          :src="apartment.heroImage"
-          :alt="apartment.title"
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black/50" />
+        <div 
+          class="w-full h-full bg-cover bg-center"
+          :style="{ backgroundImage: `url(${apartment.heroImage})` }"
+        ></div>
+        <div class="absolute inset-0 bg-black/50"></div>
       </div>
       <div class="relative z-10 text-center text-white px-4">
         <h1 class="text-4xl md:text-5xl font-heading font-bold uppercase tracking-wider mb-4">
@@ -75,7 +74,11 @@
 
           <!-- Description -->
           <div class="prose prose-lg max-w-none mb-12">
-            <p v-for="(paragraph, index) in apartment.description" :key="index" class="text-landora-muted mb-4">
+            <p 
+              v-for="(paragraph, index) in apartment.description" 
+              :key="index" 
+              class="text-landora-muted mb-4"
+            >
               {{ paragraph }}
             </p>
           </div>
@@ -89,17 +92,15 @@
               <div
                 v-for="(image, index) in apartment.gallery"
                 :key="index"
-                class="group relative aspect-property overflow-hidden rounded-lg cursor-pointer"
+                class="group relative aspect-video overflow-hidden rounded-lg cursor-pointer"
                 @click="openGallery(index)"
               >
                 <img
                   :src="image"
                   :alt="`Gallery image ${index + 1}`"
-                  class="w-full h-full object-cover transition-transform duration-500
-                         group-hover:scale-110"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 
-                            transition-colors duration-300" />
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300"></div>
               </div>
             </div>
           </div>
@@ -152,10 +153,10 @@
             <p class="text-landora-muted text-sm mb-6">
               Contact our sales team to schedule a viewing or get more information.
             </p>
-            <RouterLink to="/contact" class="btn-primary w-full mb-4">
+            <RouterLink to="/contact" class="btn-primary w-full mb-4 text-center">
               Schedule a Visit
             </RouterLink>
-            <a :href="`tel:${CONTACT_PHONE}`" class="btn-secondary w-full">
+            <a :href="`tel:${CONTACT_PHONE}`" class="btn-secondary w-full inline-flex items-center justify-center">
               <PhoneIcon class="w-5 h-5 mr-2" />
               Call Now
             </a>
@@ -165,12 +166,12 @@
               <p class="text-sm text-landora-muted mb-4">Your Sales Agent</p>
               <div class="flex items-center">
                 <img
-                  src="/images/team/team-1.jpg"
+                  :src="agentImage"
                   alt="Sales Agent"
                   class="w-14 h-14 rounded-full object-cover mr-4"
                 />
                 <div>
-                  <p class="font-semibold text-landora-dark">Sasha Alexander</p>
+                  <p class="font-semibold text-landora-dark">Jake Alexander</p>
                   <p class="text-sm text-landora-muted">Senior Sales Officer</p>
                 </div>
               </div>
@@ -183,13 +184,10 @@
               Other Apartments
             </h3>
             <div class="space-y-4">
-              <RouterLink
-                to="/apartments/two-rooms"
-                class="block group"
-              >
+              <RouterLink to="/apartments/two-rooms" class="block group">
                 <div class="flex items-center">
                   <img
-                    src="/images/apartments/two-rooms-thumb.jpg"
+                    :src="otherApartments.twoRooms"
                     alt="2 Rooms"
                     class="w-20 h-16 rounded object-cover mr-4"
                   />
@@ -201,13 +199,10 @@
                   </div>
                 </div>
               </RouterLink>
-              <RouterLink
-                to="/apartments/three-rooms"
-                class="block group"
-              >
+              <RouterLink to="/apartments/three-rooms" class="block group">
                 <div class="flex items-center">
                   <img
-                    src="/images/apartments/three-rooms-thumb.jpg"
+                    :src="otherApartments.threeRooms"
                     alt="3 Rooms"
                     class="w-20 h-16 rounded object-cover mr-4"
                   />
@@ -228,18 +223,18 @@
     <!-- Testimonial Section -->
     <section class="bg-landora-dark py-16">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <blockquote class="text-2xl md:text-3xl font-heading font-light text-white italic mb-8">
+        <blockquote class="text-xl md:text-2xl lg:text-3xl font-heading font-light text-white italic mb-8">
           "LANDORA made finding our perfect home an absolute pleasure. The quality of their 
           properties and the professionalism of their team exceeded all our expectations."
         </blockquote>
         <div class="flex items-center justify-center">
           <img
-            src="/images/testimonials/testimonial-1.jpg"
+            :src="testimonialImage"
             alt="Client"
             class="w-14 h-14 rounded-full object-cover mr-4"
           />
           <div class="text-left">
-            <p class="text-white font-semibold">Viktor & Anna Petrov</p>
+            <p class="text-white font-semibold">Viktor & Anna Rosavelt</p>
             <p class="text-gray-400 text-sm">Homeowners since 2023</p>
           </div>
         </div>
@@ -260,34 +255,39 @@ import { ref, computed } from 'vue'
 import SectionHeader from '@/components/common/SectionHeader.vue'
 import LightboxModal from '@/components/gallery/LightboxModal.vue'
 import { CONTACT_PHONE } from '@/utils/constants'
-import {
-  ChevronRightIcon,
-  CheckCircleIcon,
-  PhoneIcon,
-} from '@heroicons/vue/24/outline'
+import { ChevronRightIcon, CheckCircleIcon, PhoneIcon } from '@heroicons/vue/24/outline'
 
 const isGalleryOpen = ref(false)
 const galleryIndex = ref(0)
 
+// Online images
+const agentImage = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
+const testimonialImage = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
+
+const otherApartments = {
+  twoRooms: 'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+  threeRooms: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+}
+
 const apartment = {
   title: 'One Room 47m² Landora Flat',
   subtitle: 'Cozy Living Space for Modern Lifestyle',
-  heroImage: '/images/apartments/one-room-hero.jpg',
+  heroImage: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=1980&q=80',
   price: 85000,
   area: 47,
   mortgageRate: 3.5,
   description: [
-    'Welcome to this beautifully designed one-room apartment that perfectly balances comfort and functionality. Located in the heart of Pozniaky, this 47m² living space offers everything you need for a modern, convenient lifestyle.',
+    'Welcome to this beautifully designed one-room apartment that perfectly balances comfort and functionality. Located in the heart of Lagos, this 47m² living space offers everything you need for a modern, convenient lifestyle.',
     'The open-plan layout maximizes the sense of space, with large windows flooding the apartment with natural light. The fully equipped kitchen features premium appliances and ample storage, while the versatile living area can be arranged to suit your needs.',
     'This property is ideal for young professionals, couples, or anyone seeking a low-maintenance home in a prime location with excellent transport links and local amenities.',
   ],
   gallery: [
-    '/images/apartments/one-room-1.jpg',
-    '/images/apartments/one-room-2.jpg',
-    '/images/apartments/one-room-3.jpg',
-    '/images/apartments/one-room-4.jpg',
-    '/images/apartments/one-room-5.jpg',
-    '/images/apartments/one-room-6.jpg',
+    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
   ],
   features: [
     'Open-plan living area',
