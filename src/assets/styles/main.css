@@ -38,6 +38,22 @@
   }
 }
 
+@layer base {
+  /* Remove default focus outlines */
+  a:focus,
+  a:focus-visible,
+  button:focus,
+  button:focus-visible {
+    outline: none;
+  }
+  
+  /* Or target RouterLink specifically */
+  a[href="/"] {
+    outline: none !important;
+    border: none !important;
+  }
+}
+
 @layer components {
   /* Button Styles */
   .btn-primary {

@@ -72,16 +72,70 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
-        <RouterLink to="/" class="flex items-center">
+        <RouterLink to="/" class="flex items-center space-x-2 outline-none focus:outline-none border-none">
+          <!-- Logo Icon -->
+          <svg
+            class="w-10 h-10 sm:w-12 sm:h-12"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <!-- Background -->
+            <rect 
+              width="64" 
+              height="64" 
+              rx="12" 
+              :fill="isScrolled ? '' : ''"
+            />
+            <!-- House -->
+            <path 
+              d="M32 14L50 30V50H14V30L32 14Z" 
+              :fill="isScrolled ? '#065f46' : 'white'"
+            />
+            <!-- Inner section -->
+            <path 
+              d="M32 22L44 32V46H20V32L32 22Z" 
+              :fill="isScrolled ? 'white' : '#065f46'"
+            />
+            <!-- Door -->
+            <rect 
+              x="28" 
+              y="35" 
+              width="8" 
+              height="11" 
+              rx="1" 
+              :fill="isScrolled ? '#065f46' : 'white'"
+            />
+            <!-- Windows -->
+            <rect 
+              x="22" 
+              y="34" 
+              width="4" 
+              height="4" 
+              rx="0.5" 
+              :fill="isScrolled ? '#065f46' : 'white'"
+            />
+            <rect 
+              x="38" 
+              y="34" 
+              width="4" 
+              height="4" 
+              rx="0.5" 
+              :fill="isScrolled ? '#065f46' : 'white'"
+            />
+          </svg>
+          
+          <!-- Logo Text -->
           <span
             :class="[
-              'text-2xl font-heading font-bold tracking-wider transition-colors',
+              'text-xl sm:text-2xl font-heading font-bold tracking-wider transition-colors',
               isScrolled ? 'text-landora-primary' : 'text-white'
             ]"
           >
             LANDORA
           </span>
         </RouterLink>
+
 
         <!-- Desktop Navigation -->
         <nav class="hidden lg:flex items-center space-x-8">

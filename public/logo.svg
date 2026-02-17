@@ -1,0 +1,14 @@
+<svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon -->
+  <rect x="2" y="2" width="46" height="46" rx="10" fill="#065f46"/>
+  
+  <!-- House in Icon -->
+  <path d="M25 10L42 24V42H8V24L25 10Z" fill="white"/>
+  <path d="M25 16L36 26V38H14V26L25 16Z" fill="#065f46"/>
+  <rect x="22" y="28" width="6" height="10" rx="0.5" fill="white"/>
+  <rect x="16" y="28" width="4" height="4" rx="0.5" fill="white"/>
+  <rect x="30" y="28" width="4" height="4" rx="0.5" fill="white"/>
+  
+  <!-- Text: LANDORA -->
+  <text x="58" y="33" fill="#065f46" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3">LANDORA</text>
+</svg>
