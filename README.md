@@ -4,16 +4,16 @@ Landora is a modern, feature-rich real estate management platform built with Vue
 
 ## Features
 
-- 📱 **Responsive Design** - Mobile-first approach with Tailwind CSS
-- 🏢 **Property Management** - Showcase apartments and properties with detailed information
-- 📰 **News & Updates** - Manage and display property-related news and press releases
-- 👥 **Team Management** - Display sales team members and office locations
-- 🎨 **Image Gallery** - Interactive lightbox image gallery
-- 🔐 **Database** - Prisma ORM with PostgreSQL via Supabase
-- 📊 **State Management** - Pinia for centralized state
-- 🧪 **Testing** - Vitest and Playwright for unit and E2E testing
-- 🎬 **Animations** - Smooth scroll-based and transition animations
-- 📋 **Form Validation** - VeeValidate + Yup for robust form handling
+- **Responsive Design** - Mobile-first approach with Tailwind CSS
+- **Property Management** - Showcase apartments and properties with detailed information
+- **News & Updates** - Manage and display property-related news and press releases
+- **Team Management** - Display sales team members and office locations
+- **Image Gallery** - Interactive lightbox image gallery
+- **Database** - Prisma ORM with PostgreSQL via Supabase
+- **State Management** - Pinia for centralized state
+- **Testing** - Vitest and Playwright for unit and E2E testing
+- **Animations** - Smooth scroll-based and transition animations
+- **Form Validation** - VeeValidate + Yup for robust form handling
 
 ## Tech Stack
 
@@ -189,15 +189,11 @@ This project is configured for deployment on [Vercel](https://vercel.com). The b
 
 ## Security Best Practices
 
-- ✅ Environment variables are kept in `.env.local` (never committed)
-- ✅ API keys and secrets are never hardcoded
-- ✅ Sensitive files are listed in `.gitignore`
-- ✅ HTTPS headers are configured in `vercel.json`
+- Environment variables are kept in `.env.local` (never committed)
+- API keys and secrets are never hardcoded
+- Sensitive files are listed in `.gitignore`
+- HTTPS headers are configured in `vercel.json`
 
 ## License
 
-This project is proprietary software developed for Landora Real Estate.
-
-## Support
-
-For issues or questions, please contact the development team.
+This project is proprietary software developed By Caleb.
