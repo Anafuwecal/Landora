@@ -55,27 +55,9 @@
     </Swiper>
 
     <!-- Custom Navigation -->
-    <button
-      class="swiper-button-prev absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10
-             w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm
-             flex items-center justify-center text-white
-             hover:bg-white hover:text-landora-primary transition-all duration-300"
-    >
-      <ChevronLeftIcon class="w-6 h-6" />
-    </button>
-    <button
-      class="swiper-button-next absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10
-             w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm
-             flex items-center justify-center text-white
-             hover:bg-white hover:text-landora-primary transition-all duration-300"
-    >
-      <ChevronRightIcon class="w-6 h-6" />
-    </button>
+    
 
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-      <ChevronDownIcon class="w-8 h-8 text-white" />
-    </div>
+    
   </section>
 </template>
 
@@ -83,8 +65,6 @@
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Pagination, EffectFade, Navigation } from 'swiper/modules'
-import type { SwiperOptions } from 'swiper/types'
-import { ChevronLeftIcon, ChevronRightIcon, ChevronDownIcon } from '@heroicons/vue/24/outline'
 import { HERO_SLIDES } from '@/utils/constants'
 
 import 'swiper/css'
