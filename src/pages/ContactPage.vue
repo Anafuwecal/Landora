@@ -91,11 +91,11 @@
           <!-- Map -->
           <div class="rounded-lg overflow-hidden shadow-lg h-64">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.46310757624!2d3.1191427001003134!3d6.5483693711779205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2snl!4v1771190291609!5m2!1sen!2snl"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.537058804556!2d30.52266731573094!3d50.45079597947512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce56b2456d3b%3A0xd062ae171b57e947!2sKhreshchatyk%20St%2C%20Kyiv%2C%20Ukraine!5e0!3m2!1sen!2sus!4v1642000000000!5m2!1sen!2sus"
               width="100%"
               height="100%"
               style="border:0;"
-              allowfullscreen=""
+              allowfullscreen
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
